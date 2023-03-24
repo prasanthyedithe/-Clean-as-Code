@@ -1242,10 +1242,49 @@ This chapter is a study case. It's recommendable to completely read it to unders
 </a>
 This chapter analize the JUnit tool. It's recommendable to completely read it to understand more.
 
+Firstly this chapter is not about TDD or JUnit. It’s about refactoring JUnit framework originally written by Erich Gamma and Kent Beck. Uncle Bob says after three hours of high-altitude work, they had written the basics of JUnit.
+
+Uncle Bob selects ComparisonCompactor class as an example and he tries to refactor it. I think the idea behind this chapter is encouraging people to do refactoring. As you may guess before starting refactor, he says that ComparisonCompactor class has %100 test coverage which is vital for refactoring process.
+
+All my refactoring I did during my career was over the code which had %0 test coverage. Because of this doing refactor is always in an anxious manner for me. After each change, you may need to test the behaviour. If there is no written test, the project may need to be retested to the most comprehensive range.
+
+He starts refactoring with renaming member names, encapsulating conditionals, avoiding from negative conditionals and renaming method names. All of this kind of work can be considered as small examples of refactoring. He reverses some of his decisions during refactoring. He says that often one refactoring leads to another that leads to the undoing of the first. Refactoring is an iterative process full of trial and error, inevitably converging on something that we feel is worthy of a professional. So we need to trust ourselves during this process. Nothing is perfect!
+
 <a name="16">
 <h1>Chapter 16 -  Refactoring SerialDate</h1>
 </a>
-This chapter is a study case. It's recommendable to completely read it to understand more.
+I am reading Clean Code cult written by Uncle Bob. Here you can find the summary of Refactoring SerialDate.
+
+In this chapter Uncle Bob refactors SerialDate class in JCommon library. SerialDate class includes professionalism and discipline inside it. And Uncle Bob considers it as “good code”. However, he states that each code may have issues even if written by him. He states that reviewing the code of another people and finding errors is not an indication of hierarchy.
+
+<img src="https://miro.medium.com/v2/resize:fit:828/format:webp/1*Z2x81ukSa-pP8ZQg1_ZEXQ.jpeg"/>
+
+He states that “What I am about to do is nothing more and nothing less than a professional review”.
+
+From my understanding this chapter has mentions about psychological aspects of code review. He states that code review process needs to be done kindly and professionally. In addition, every developer should be open to code reviews.
+
+First of all he use Clover to check unit test coverage and the result is approximately %50. Then he wrote unit tests to understand code well and increase coverage. He comment out some of his tests and decide to work on them in refactoring process. After test implementation finish Clover reports that test coverage is %92 even if there is also uncommented tests.
+
+Refactoring Approaches<br>
+[R] If there is code with only used from test delete test and code together.<br>
+[R] If algorithms a bit complicated try to use EXPLAINING TEMPORARY VARIABLES approach. This approach uses temporary variables to explain more detail about implementation.<br>
+[R] If enum`s are pretty large just move it to another class. And implement necessary methods inside enums.<br>
+[R] Connect multiple if statements into a single if statement using the || and && operators.<br>
+[R] Convert constant static integers to enums. (This might be bad for Android)<br>
+[R] Use the power of IDE. Check the usages of variables and methods and replace their names with help of IDE.<br>
+[R] If variable names are sufficient, delete the comments. If not rename variables and methods.<br>
+[R] Name methods and variables meaningful.<br>
+[R] It’s generally a bad idea for base classes to know about their derivatives. To fix this, use the ABSTRACT FACTORY pattern and create instance from factory.<br>
+[R] Delete change history from top of the class because its not important since we are using version control tools.<br>
+[R] Having more than one language in source code causes trouble. Remove html codes from Javadocs.<br>
+[R] Try to understand with why questions.<br>
+[R] Inheriting from classes with constants is an old trick that Java programmers used so that they could avoid using expressions like MonthConstants.January, but it’s a bad idea.<br>
+[R] Redundant comments are just places to collect lies and misinformation. Get rid of them.<br>
+[R] Eliminating final flies in the face of some conventional wisdom. For example, Robert Simmons strongly recommends us to “. . . spread final all over your code.” Clearly I<br> disagree. I think that there are a few good uses for final, such as the occasional final constant, but otherwise the keyword adds little value and creates a lot of clutter.
+[R] Calling one method from another with only a flag generally a bad practice. Make different methods if necessary rather than flag passing.<br>
+
+
+
 
 <a name="17">
 <h1>Chapter 17 -  Smells and Heuristics</h1>
